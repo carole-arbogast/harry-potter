@@ -8,6 +8,11 @@ body {
     color: white;
 }
 
+.ui.brown.button.my-button {
+    background-color: #331a00;
+    margin-left: 10px;
+}
+
 .item{
     color: white;
 }
@@ -34,5 +39,11 @@ body {
 
 .comments {
     margin-top: 35px;
+    margin-bottom: 5px;
+    color: black; 
+}
+
+.ui.comments:last-child {
+    margin-bottom: 50px;
 }
 
