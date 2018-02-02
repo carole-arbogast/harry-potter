@@ -1,0 +1,38 @@
+body {
+    background-color: #1B1C1D;
+    color: white;
+}
+
+.ui.segment.my-card {
+    background-color: #331a00;
+    color: white;
+}
+
+.item{
+    color: white;
+}
+
+.information {
+ padding: 0px 25px 0px 25px;   
+}
+
+.desc {
+    padding-bottom: 10px; 
+}
+
+.ui.grey.button{
+    margin-left: 10px;
+}
+
+.buttons {
+    display: flex;
+}
+
+.ui.mini.image {
+    width: 45px;
+}
+
+.comments {
+    margin-top: 35px;
+}
+

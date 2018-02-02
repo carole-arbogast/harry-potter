@@ -1,0 +1,62 @@
+<% include ../partials/header %>
+
+
+
+<div class="ui main text container inverted segment">
+    <h1>Edit <%= character.name %></h1>
+    <div class="ui inverted form">
+        <form action = "/characters/<%= character._id %>?_method=PUT" method="POST" class="ui form">
+            
+          <div class="field">
+            <label>Name</label>
+            <input name = "character[name]" type = "text" value="<%= character.name %>">
+          </div>
+          
+          <div class="field">
+            <label>Photo</label>
+            <input name = "character[photo]" type = "text" value="<%= character.photo %>">
+          </div>
+          
+          <div class="field">
+            <label>Occupation</label>
+            <input name = "character[occupation]" type = "text" value="<%= character.occupation %>">
+          </div>  
+          
+          <label for="character[house]">House: </label>
+          <div class="grouped fields">
+              <div class="field">
+                  <div class="ui radio checkbox">
+                    <input id="gryff" name="character[house]" value="Gryffindor" checked="" tabindex="0" class="hidden" type="radio">
+                    <label for="gryff">Gryffindor</label>
+                  </div>
+              </div>
+              <div class="field">
+                  <div class="ui radio checkbox">
+                    <input id="huf" name="character[house]" value="Huffelpuff" tabindex="0" class="hidden" type="radio">
+                    <label for="huf">Huffelpuff</label>
+                  </div>
+              </div>
+              <div class="field">
+                  <div class="ui radio checkbox">
+                    <input id="rav" name="character[house]" value="Ravenclaw" tabindex="0" class="hidden" type="radio">
+                    <label for="rav">Ravenclaw</label>
+                  </div>
+              </div>
+              <div class="field">
+                  <div class="ui radio checkbox">
+                    <input id="sly" name="character[house]" value="Slytherin" tabindex="0" class="hidden" type="radio">
+                    <label for="sly">Slytherin</label>
+                  </div> 
+              </div>
+          </div>
+          
+          <div class="field">
+            <label>Description</label>
+            <textarea name = "character[description]"><%= character.description %></textarea>
+          </div>
+          <button class="ui button" type="submit">Submit</button>
+        </form>
+    </div>
+</div>
+
+<% include ../partials/footer %>

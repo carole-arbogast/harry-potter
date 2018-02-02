@@ -1,0 +1,64 @@
+<% include ../partials/header %>
+
+
+
+<div class="ui main text container inverted segment">
+    <h1>Add a new character</h1>
+    <div class="ui inverted form">
+        <form action = "/characters" method="POST" class="ui form">
+            
+            <!--Text inputs-->
+            
+          <div class="field">
+            <label>Name</label>
+            <input name = "character[name]" type = "text" placeholder="name">
+          </div>
+          
+          <div class="field">
+            <label>Photo</label>
+            <input name = "character[photo]" type = "text" placeholder="photo">
+          </div>
+          
+          <div class="field">
+            <label>Occupation</label>
+            <input name = "character[occupation]" type = "text" placeholder="occupation">
+          </div>
+          
+          <!--Radio buttons-->
+          
+          <label for="character[house]">House: </label>
+          <div class="grouped fields">
+              <div class="field">
+                  <div class="ui radio checkbox">
+                    <input id="gryff" name="character[house]" value="Gryffindor" checked="" tabindex="0" class="hidden" type="radio">
+                    <label for="gryff">Gryffindor</label>
+                  </div>
+              </div>
+              <div class="field">
+                  <div class="ui radio checkbox">
+                    <input id="huf" name="character[house]" value="Huffelpuff" tabindex="0" class="hidden" type="radio">
+                    <label for="huf">Huffelpuff</label>
+                  </div>
+              </div>
+              <div class="field">
+                  <div class="ui radio checkbox">
+                    <input id="rav" name="character[house]" value="Ravenclaw" tabindex="0" class="hidden" type="radio">
+                    <label for="rav">Ravenclaw</label>
+                  </div>
+              </div>
+              <div class="field">
+                  <div class="ui radio checkbox">
+                    <input id="sly" name="character[house]" value="Slytherin" tabindex="0" class="hidden" type="radio">
+                    <label for="sly">Slytherin</label>
+                  </div> 
+              </div>
+          </div>
+          <div class="field">
+            <label>Description</label>
+            <textarea name = "character[description]"></textarea>
+          </div>
+          <button class="ui button" type="submit">Submit</button>
+        </form>
+    </div>
+</div>
+<% include ../partials/footer %>
