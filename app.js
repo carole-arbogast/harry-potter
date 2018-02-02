@@ -18,7 +18,8 @@ var indexRoutes     = require("./routes/index"),
     characterRoutes = require("./routes/characters"), 
     commentRoutes   = require("./routes/comments"); 
     
-mongoose.connect("mongodb://localhost/harry_potter");
+var url = process.env.DATABASEURL || "mongodb://localhost/harry_potter"
+mongoose.connect(url); 
 
 app.set("view engine", "ejs");
 app.use(express.static("public"));
