@@ -38,7 +38,26 @@
                 </a>
               <% } %>
             </div>
-
          </div>
     </div>
+ </div>
+ 
+ <% if (error && error.length > 0){ %>
+    <div class="ui main text container inverted segment">
+      <div class="ui tiny negative message">
+      <div class="header">
+        <%= error %>
+      </div>
+      </div>
     </div>
+ <% } %>
+ 
+  <% if (success && success.length > 0){ %>
+    <div class="ui main text container inverted segment">
+      <div class="ui tiny positive message">
+      <div class="header">
+        <%= success %>
+      </div>
+      </div>
+    </div>
+ <% } %>

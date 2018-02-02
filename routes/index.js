@@ -19,10 +19,11 @@ router.get("/register", function(req, res){
 router.post("/register", function(req, res){
     User.register(new User({username: req.body.username}), req.body.password, function(err, user){
         if(err){
-            console.log(err); 
-            res.render("error"); 
+            req.flash("error", err.message); 
+            return res.redirect("/register"); 
         } 
         passport.authenticate("local")(req, res, function(){
+            req.flash("success", "Welcome to Hogwarts!")
             res.redirect("/characters"); 
         })
         
@@ -38,7 +39,9 @@ router.get("/login", function(req, res){
 
 router.post("/login", passport.authenticate("local", {
     successRedirect: "/characters",
-    failureRedirect: "/login"
+    failureRedirect: "/login", 
+    successFlash: true, 
+    failureFlash: true
 }) ,function(req, res){
 });
 

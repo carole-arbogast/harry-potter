@@ -1,6 +1,7 @@
 var express     = require("express"), 
     router      = express.Router(), 
     Character   = require("../models/character"), 
+    middleware  = require("../middleware"), 
     passport    = require("passport"); 
 
 // INDEX ROUTE 
@@ -18,14 +19,20 @@ router.get("/", function(req, res){
 
 // NEW ROUTE
 
-router.get("/new", function(req, res){
+router.get("/new", middleware.isLoggedIn, function(req, res){
     res.render("characters/new"); 
 })
 
 // CREATE ROUTE
 
-router.post("/", function(req, res){
-    Character.create(req.body.character, function(err, character){
+router.post("/", middleware.isLoggedIn, function(req, res){
+    var character = req.body.character;
+    character.author = {
+        id: req.user._id,
+        username: req.user.username
+    };
+    Character.create(character, function(err, character){
+        console.log(character.author.username); 
         if(err){
             res.redirect("/characters"); 
         } else {
@@ -48,7 +55,7 @@ router.get("/:id", function(req, res){
 
 // EDIT ROUTE
 
-router.get("/:id/edit", function(req, res){
+router.get("/:id/edit", middleware.checkCharacterOwnership, function(req, res){
     Character.findById(req.params.id, function(err, character){
         if(err){
             res.render("error"); 
@@ -60,7 +67,7 @@ router.get("/:id/edit", function(req, res){
 
 // UPDATE ROUTE
 
-router.put("/:id", function(req, res){
+router.put("/:id", middleware.checkCharacterOwnership, function(req, res){
     Character.findByIdAndUpdate(req.params.id, req.body.character, function(err, character){
         if(err){
             res.render("error"); 
@@ -72,7 +79,7 @@ router.put("/:id", function(req, res){
 
 // DELETE ROUTE
 
-router.delete("/:id", function(req, res){
+router.delete("/:id", middleware.checkCharacterOwnership, function(req, res){
     Character.findByIdAndRemove(req.params.id, function(err, character){
         if(err){
             res.render("error"); 

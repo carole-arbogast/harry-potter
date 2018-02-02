@@ -2,24 +2,25 @@
 
 
 
-<div class="ui main text container inverted segment">
-    <h1>Sign Up</h1>
-    <div class="ui inverted form">
-        <form action = "/register" method="POST" class="ui form">
+  <div class="ui main text container inverted segment">
+      <h1>Sign Up</h1>
+      <div class="ui inverted form">
+          <form action = "/register" method="POST" class="ui form">
+  
+            <div class="field">
+              <label>Username</label>
+              <input name = "username" type = "text" placeholder="username">
+            </div>
+            
+            <div class="field">
+              <label>Password</label>
+              <input name = "password" type = "password" placeholder="password">
+            </div>
+            
+            
+            <button class="ui button" type="submit">Submit</button>
+          </form>
+      </div>
+  </div>
 
-          <div class="field">
-            <label>Username</label>
-            <input name = "username" type = "text" placeholder="username">
-          </div>
-          
-          <div class="field">
-            <label>Password</label>
-            <input name = "password" type = "password" placeholder="password">
-          </div>
-          
-          
-          <button class="ui button" type="submit">Submit</button>
-        </form>
-    </div>
-</div>
 <% include ./partials/footer %>

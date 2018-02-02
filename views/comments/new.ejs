@@ -7,21 +7,14 @@
     <div class="ui inverted form">
         <form action = "/characters/<%= character._id %>/comments" method="POST" class="ui form">
             
-            <!--Text inputs-->
-            
-          <div class="field">
-            <label>Name</label>
-            <input name = "comment[author]" type = "text" placeholder="name">
-          </div>
-          
           <div class="field">
             <label>Comment</label>
-            <input name = "comment[text]" type = "text" placeholder="photo">
+            <textarea name="comment[text]"></textarea>
           </div>
-          
           
           <button class="ui button" type="submit">Submit</button>
         </form>
     </div>
 </div>
+
 <% include ../partials/footer %>

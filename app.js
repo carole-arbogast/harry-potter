@@ -5,6 +5,7 @@ var methodOverride          = require("method-override"),
     mongoose                = require("mongoose"),
     express                 = require("express"),
     app                     = express(),
+    flash                   = require("connect-flash"),
     Character               = require("./models/character"),
     Comment                 = require("./models/comment"),
     User                    = require("./models/user"),
@@ -24,6 +25,8 @@ app.use(express.static("public"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(methodOverride("_method"));
+app.use(flash()); 
+
 app.use(require("express-session")({
     secret: "Tiny potato is tiny",
     resave: false,
@@ -40,11 +43,12 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 app.use(function(req, res, next){
-    res.locals.currentUser = req.user; 
+    res.locals.currentUser = req.user;
+    res.locals.error = req.flash("error"); 
+    res.locals.success = req.flash("success"); 
     next(); 
 })
 
-// seedDB(); 
 
 app.use("/", indexRoutes); 
 app.use("/characters", characterRoutes); 
